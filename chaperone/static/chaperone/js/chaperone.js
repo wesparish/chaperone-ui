@@ -222,21 +222,21 @@ chaperone.utils = {
     /* Note which item was last viewed. */
     chaperone.utils.clearMessages();
     var $div = $('#' + itemId);
-    var activeClass = 'active-item';
+    /* var activeClass = 'active';
     $('#leftnav div.clickable.' + activeClass).removeClass(activeClass);
     $div.addClass(activeClass);
     var buttonId = $div.closest('div.menu').prev('#leftnav div.leftnav-btn')
                      .attr('id');
-    $.cookie(buttonId + 'Item', $div.attr('id'));
+    $.cookie(buttonId + 'Item', $div.attr('id'));*/
 
-    if ($div.parents('.prepare-menu').length) {
+    if ($div.parents('.treeview-menu').length) {
       /* Show form to set the group's answers. */
       var containerName = $div.attr('data-container');
       var groupName = $div.attr('data-group');
       chaperone.utils.loadGroup(containerName, groupName);
     }
 
-    if ($div.hasClass('actionable')) {
+    if ($div.attr('data-action')) {
       /* Retrieve page content based on button clicked. */
       var action = $div.attr('data-action');
       if (!action || $div.hasClass('active-btn')) {
