@@ -16,6 +16,10 @@
 
   {% for group in groups %}
   {% for group_name in group.keys %}
-  <li><div id="{{ menu_name|slugify }}_{{ group_name|slugify }}" class="clickable actionable" data-action="{% url 'execute:index' %}" data-menu="{{ menu_name }}" data-group="{{ group_name }}">{{ group_name }}</div></li>
+  <li>
+    <a id="{{ menu_name|slugify }}_{{ group_name|slugify }}" href="#" class="actionable" data-action="{% url 'execute:index' %}" data-menu="{{ menu_name }}" data-group="{{ group_name }}">{{ group_name }}
+    </a>
+  </li>
   {% endfor %}
   {% endfor %}
+

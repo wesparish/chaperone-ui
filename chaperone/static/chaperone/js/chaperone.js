@@ -639,6 +639,11 @@ chaperone.addInitFunction(function() {
     chaperone.utils.openLeftnavItem(this.id);
   });
 
+  $('#leftnav a').click(function(event) {
+    chaperone.utils.confirmSave();
+    chaperone.utils.openLeftnavItem(this.id);
+  });
+
   /* Warnings to user when leaving the page. */
   $(window).bind('beforeunload', function(event) {
     if ($('#prepare-form').hasClass('dirty')) {

@@ -26,8 +26,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
   -->
-  <link rel="stylesheet" href="{{ STATIC_URL }}adminlte/skins/skin-blue.min.css">
-  <link rel="stylesheet" href="{{ STATIC_URL }}adminlte/skins/skin-red.min.css">
+  {% if settings.APP_FULLNAME == 'VMware Chaperone Administration' %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}adminlte/skins/skin-red.min.css">
+  {% else %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}adminlte/skins/skin-blue.min.css">
+  {% endif %}
 
   <link rel="shortcut icon" href="{{ STATIC_URL }}chaperone/img/favicon.ico">
   <script src="{{ STATIC_URL }}chaperone/js/base.js" type="text/javascript" charset="utf-8"></script>
@@ -251,8 +254,7 @@ desired effect
       </div>
 
       <!-- Sidebar Menu -->
-      <ul class="sidebar-menu">
-        <div id="leftnav">
+      <ul id="leftnav" class="sidebar-menu">
         {% for menu in menus %}{% for menu_name, menu_list in menu.items %}
             <li class="header">{{ menu_name }}</li>
           {% if menu_name == settings.PREPARE_MENU %}
@@ -261,7 +263,6 @@ desired effect
             {% include "execute/_menu.html" with groups=menu_list %}
           {% endif %}
         {% endfor %}{% endfor %}
-        </div>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
